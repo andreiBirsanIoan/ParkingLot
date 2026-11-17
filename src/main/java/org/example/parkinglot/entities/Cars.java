@@ -16,10 +16,7 @@ public class Cars {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
-    private Cars owner;
-
-    @OneToMany(mappedBy = "owner", orphanRemoval = true)
-    private List<Cars> cars = new ArrayList<>();
+    private User owner;
 
     public String getLicensePlate() {
         return licensePlate;
@@ -39,19 +36,13 @@ public class Cars {
 
     private String parkingSpot;
 
-    public List<Cars> getCars() {
-        return cars;
-    }
+    
 
-    public void setCars(List<Cars> cars) {
-        this.cars = cars;
-    }
-
-    public Cars getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(Cars owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 

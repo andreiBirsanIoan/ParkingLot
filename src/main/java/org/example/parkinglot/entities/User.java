@@ -2,6 +2,9 @@ package org.example.parkinglot.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -15,7 +18,16 @@ public class User {
     public String getPassword() {
         return password;
     }
+    @OneToMany(mappedBy = "owner", orphanRemoval = true)
+    private List<Cars> cars = new ArrayList<>();
 
+    public List<Cars> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Cars> cars) {
+        this.cars = cars;
+    }
     public void setPassword(String password) {
         this.password = password;
     }
